@@ -1,0 +1,2255 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> شواهد الأداء الوظيفي</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%231e3a8a'><path d='M2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1zm-4 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 .5.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5V5z'/></svg>">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f8f9fa;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .card {
+      border-radius: 12px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .indicator-box {
+      border-right: 4px solid #0d6efd;
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+    }
+
+    .is-featured {
+      background-color: #ffc107 !important;
+      color: #fff !important;
+    }
+
+    .is-featured i {
+      color: #fff !important;
+    }
+
+    .bi-spin {
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .scrollable-table-container {
+      max-height: 480px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      background-color: #212529;
+    }
+
+    .scrollable-table-container::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .scrollable-table-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #b8860b, #d4af37);
+      border-radius: 10px;
+    }
+
+    /* رأس جدول الشواهد المميزة بتدرج كحلي ملوكي مع لمسات ذهبية متناسقة */
+    .gold-gradient-header th {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%) !important;
+      color: #f9f0b3 !important;
+      font-weight: 700 !important;
+      border: none !important;
+      border-bottom: 2px solid #d4af37 !important;
+      text-align: right;
+      vertical-align: middle;
+      padding: 12px 14px !important;
+      letter-spacing: 0.3px;
+    }
+
+    .featured-badge-star {
+      color: #f59e0b;
+      filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.4));
+    }
+
+    .featured-row-item {
+      transition: all 0.25s ease;
+      border-right: 4px solid transparent;
+    }
+
+    .featured-row-item:hover {
+      background-color: rgba(212, 175, 55, 0.08) !important;
+      border-right-color: #d4af37;
+    }
+
+    .scrollable-table-container .sticky-top th {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .blue-gradient-header th {
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      padding: 10px 8px !important;
+      border: none !important;
+      text-align: center;
+    }
+
+    #recentFilesBody tr:hover,
+    #featuredTableBody tr:hover {
+      background-color: rgba(0, 0, 0, 0.04) !important;
+      color: #000 !important;
+      transition: 0.3s ease;
+    }
+
+    .custom-navbar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%) !important;
+      border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+      padding: 6px 0;
+    }
+
+    .navbar-container-custom,
+    .footer-container-custom {
+      width: 100%;
+      max-width: 1320px;
+      padding-left: 24px;
+      padding-right: 24px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container-custom,
+      .footer-container-custom {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+    }
+
+    .brand-logo-icon {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%) !important;
+      color: #0f172a !important;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12) !important;
+      border: 1.5px solid rgba(212, 175, 55, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .brand-logo-icon i {
+      font-size: 1.1rem !important;
+    }
+
+    .brand-title {
+      font-size: 1.1rem;
+      letter-spacing: -0.2px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .user-pill {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      padding: 3px 10px;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+    }
+
+    .user-pill:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: rgba(212, 175, 55, 0.6);
+    }
+
+    /* تحسين التجاوب مع مختلف مقاسات الشاشات والجوالات */
+    @media (max-width: 768px) {
+      .custom-navbar {
+        padding: 5px 0;
+      }
+      .brand-title {
+        font-size: 0.95rem !important;
+      }
+      .brand-logo-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+      }
+      .brand-logo-icon i {
+        font-size: 1rem !important;
+      }
+      .user-pill {
+        padding: 2px 8px;
+      }
+      #userInfo {
+        max-width: 120px;
+        font-size: 0.75rem !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-title {
+        font-size: 0.88rem !important;
+      }
+      #userInfo {
+        max-width: 90px;
+      }
+    }
+
+    .custom-footer {
+      background: #0f172a !important;
+      border-top: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+      margin-top: auto;
+      padding: 10px 0 !important;
+    }
+
+    .footer-pill-credits {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      padding: 3px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .developer-name {
+      background: linear-gradient(135deg, #f9f0b3 0%, #d4af37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .indicator-row {
+      transition: all 0.3s ease;
+      border-right: 4px solid transparent;
+      border: 1px solid rgba(226, 232, 240, 0.85);
+      background: #ffffff;
+      border-radius: 10px;
+    }
+
+    .indicator-row:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06) !important;
+      border-color: rgba(30, 58, 138, 0.25);
+    }
+
+    .indicator-completed {
+      background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%) !important;
+      border-right: 4px solid #10b981 !important;
+      border-color: rgba(16, 185, 129, 0.3) !important;
+      box-shadow: 0 3px 10px rgba(16, 185, 129, 0.08) !important;
+    }
+
+    .btn-upload-custom {
+      background: #ffffff;
+      color: #1e3a8a;
+      border: 1px solid rgba(30, 58, 138, 0.35);
+      font-weight: 600;
+      font-size: 0.82rem;
+      border-radius: 8px;
+      padding: 5px 12px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-upload-custom:hover {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #f9f0b3;
+      border-color: #d4af37;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(30, 58, 138, 0.2);
+    }
+
+    .status-badge-pending {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+
+    .status-badge-done {
+      background: linear-gradient(135deg, #065f46 0%, #059669 100%);
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+    }
+
+    .file-badge-pill {
+      background: #ffffff;
+      color: #0f172a;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .file-badge-pill:hover {
+      border-color: #b8860b;
+      box-shadow: 0 3px 8px rgba(184, 134, 11, 0.15);
+    }
+
+    .file-badge-pill a {
+      color: #1e3a8a;
+      text-decoration: none;
+      font-weight: 600;
+      max-width: 140px;
+    }
+
+    .file-badge-pill a:hover {
+      color: #b8860b;
+    }
+
+    .transition-icon {
+      transition: transform 0.3s ease;
+    }
+
+    .file-box-container {
+      min-height: 38px;
+      padding: 5px 0;
+    }
+
+    #completionBar {
+      transition: width 1s ease-in-out, background-color 0.5s ease;
+    }
+
+    .swal2-popup {
+      border-top: 5px solid #0d6efd !important;
+      border-radius: 15px !important;
+    }
+
+    /* تصميم بطاقات الدخول والتسجيل الفاخرة */
+    .auth-card {
+      background: #ffffff;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #1e3a8a 0%, #b8860b 50%, #1e3a8a 100%);
+    }
+
+    .auth-header-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 12px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #f9f0b3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+    }
+
+    .auth-btn-primary {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      color: #ffffff;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .auth-btn-primary:hover {
+      background: linear-gradient(135deg, #1e293b 0%, #1e3a8a 100%);
+      color: #f9f0b3;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    }
+
+    .auth-input-group .input-group-text {
+      background-color: #f8fafc;
+      border-color: #e2e8f0;
+      color: #64748b;
+    }
+
+    .auth-input-group .form-control {
+      border-color: #e2e8f0;
+      padding: 9px 12px;
+      font-size: 0.92rem;
+    }
+
+    .auth-input-group .form-control:focus {
+      border-color: #1e3a8a;
+      box-shadow: 0 0 0 0.2rem rgba(30, 58, 138, 0.15);
+    }
+    .stat-card-navy {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e3a8a 100%) !important;
+      border-bottom: 3px solid rgba(212, 175, 55, 0.6) !important;
+      color: #ffffff !important;
+    }
+
+    .stat-card-gold {
+      background: linear-gradient(135deg, #78520b 0%, #9a6a12 50%, #b8860b 100%) !important;
+      border-bottom: 3px solid #f9f0b3 !important;
+      color: #ffffff !important;
+    }
+
+    /* كرت إجمالي الملفات في لوحة الإشراف العام بتدرج راقي */
+    .stat-card-files {
+      background: linear-gradient(135deg, #1e3a8a 0%, #0f766e 100%) !important;
+      border-bottom: 3px solid rgba(212, 175, 55, 0.6) !important;
+      color: #ffffff !important;
+    }
+
+    .admin-section-title {
+      color: #0f172a;
+      font-weight: 700;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-section-title i {
+      color: #b8860b;
+    }
+
+    .stat-card-progress {
+      background: #ffffff !important;
+      border: 1px solid rgba(226, 232, 240, 0.9) !important;
+      border-bottom: 3px solid #1e3a8a !important;
+    }
+
+    .stat-card-icon {
+      font-size: 2.2rem;
+      opacity: 0.35;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .stat-card-icon {
+      transform: scale(1.1);
+      opacity: 0.55;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- شريط التنقل العلوي المتجاوب -->
+  <nav class="navbar navbar-dark custom-navbar mb-4 shadow-sm">
+    <div class="navbar-container-custom d-flex justify-content-between align-items-center">
+
+      <!-- هوية النظام والعنوان -->
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow-sm brand-logo-icon">
+          <i class="bi bi-collection-fill fs-4"></i>
+        </div>
+        <div class="text-white">
+          <h5 class="fw-bold mb-0 brand-title"> شواهد الأداء الوظيفي</h5>
+          <div class="d-md-none opacity-75 text-truncate" style="font-size: 0.68rem; max-width: 170px;">
+            مجمع الإمام يعقوب وأبو عمرو البصري
+          </div>
+        </div>
+      </div>
+
+      <!-- معلومات المستخدم وهوية المجمع -->
+      <div class="d-flex align-items-center gap-2 gap-md-3">
+        <!-- بيانات المستخدم بعد الدخول -->
+        <div id="userInfoContainer" class="user-pill align-items-center hidden d-flex">
+          <i class="bi bi-person-circle text-white-50 ms-1 d-none d-sm-inline"></i>
+          <span id="userInfo" class="me-1 small fw-bold text-white text-truncate" onclick="openEditProfile()" style="cursor: pointer;" title="انقر لتعديل بيانات الحساب"></span>
+          <button onclick="handleLogout()" class="btn btn-sm btn-light rounded-pill text-danger fw-bold ms-2 px-2 py-0" style="font-size: 0.72rem;" title="تسجيل الخروج">
+            <i class="bi bi-box-arrow-left"></i> <span class="d-none d-sm-inline">خروج</span>
+          </button>
+        </div>
+
+        <!-- اسم المجمع على الشاشات المتوسطة والكبيرة -->
+        <div class="text-white text-end d-none d-md-block border-start border-white border-opacity-25 ps-3">
+          <div style="font-size: 0.7rem; opacity: 0.85; line-height: 1;">مجمع</div>
+          <div class="fw-bold" style="font-size: 0.85rem; line-height: 1.2;">الإمام يعقوب البصري وأبو عمرو البصري</div>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- الحاوية الرئيسية للواجهات -->
+  <div class="container mb-5 flex-grow-1">
+
+    <!-- قسم تسجيل الدخول -->
+    <div id="loginSection" class="row justify-content-center pt-4">
+      <div class="col-md-5 col-lg-4">
+        <form id="loginForm" class="auth-card p-4" onsubmit="event.preventDefault(); handleLogin();">
+          <div class="text-center mb-3">
+            <div class="auth-header-icon">
+              <i class="bi bi-shield-lock-fill fs-4"></i>
+            </div>
+            <h4 class="fw-bold mb-1" style="color: #0f172a;">تسجيل الدخول</h4>
+            <span class="text-muted small">بوابة شواهد الأداء الوظيفي </span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted mb-1">البريد الإلكتروني</label>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+              <input type="email" id="user" class="form-control" placeholder="name@domain.com" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <label class="form-label small fw-bold text-muted mb-0">كلمة المرور</label>
+              <a href="#" class="small text-decoration-none fw-bold" style="color: #b8860b; font-size: 0.8rem;" onclick="openForgotPassword()">نسيت كلمة المرور؟</a>
+            </div>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" id="pass" class="form-control" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <button type="submit" id="loginBtn" class="btn auth-btn-primary w-100 my-2">
+            <i class="bi bi-box-arrow-in-left me-1"></i> دخول
+          </button>
+
+          <div class="text-center mt-3 pt-2 border-top">
+            <span class="text-muted small">ليس لديك حساب؟</span>
+            <a href="#" class="text-decoration-none fw-bold ms-1" style="color: #1e3a8a; font-size: 0.88rem;" onclick="showSection('registerSection')">سجل الآن</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- قسم إنشاء حساب جديد -->
+    <div id="registerSection" class="row justify-content-center hidden pt-4">
+      <div class="col-md-5 col-lg-4">
+        <div class="auth-card p-4">
+          <div class="text-center mb-3">
+            <div class="auth-header-icon" style="background: linear-gradient(135deg, #78520b 0%, #b8860b 100%);">
+              <i class="bi bi-person-plus-fill fs-4"></i>
+            </div>
+            <h4 class="fw-bold mb-1" style="color: #0f172a;">إنشاء حساب جديد</h4>
+            <span class="text-muted small">انضم لمنصة إدارة شواهد الأداء الوظيفي</span>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted mb-1">الاسم الكامل</label>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+              <input type="text" id="regName" class="form-control" placeholder="الاسم الثلاثي أو الرباعي" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted mb-1">البريد الإلكتروني</label>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+              <input type="email" id="regUser" class="form-control" placeholder="name@domain.com" required>
+            </div>
+            <div class="form-text text-muted" style="font-size: 0.72rem;">يُستخدم للدخول واستعادة كلمة المرور.</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted mb-1">كلمة المرور</label>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input type="password" id="regPass" class="form-control" placeholder="••••••••" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label small fw-bold text-muted mb-1">الدور الوظيفي</label>
+            <div class="input-group auth-input-group">
+              <span class="input-group-text"><i class="bi bi-briefcase-fill"></i></span>
+              <select id="regRole" class="form-select">
+                <option value="معلم">معلم</option>
+                <option value="وكيل">وكيل</option>
+                <option value="موجه طلابي">موجه طلابي</option>
+                <option value="رائد نشاط">رائد نشاط</option>
+                <option value="محضر مختبر">محضر مختبر</option>
+              </select>
+            </div>
+          </div>
+
+          <button onclick="handleRegister()" id="regBtn" class="btn auth-btn-primary w-100 my-2">
+            <i class="bi bi-check-circle-fill me-1"></i> تأكيد التسجيل
+          </button>
+
+          <div class="text-center mt-3 pt-2 border-top">
+            <a href="#" class="text-decoration-none small text-muted fw-bold" onclick="showSection('loginSection')">
+              <i class="bi bi-arrow-right"></i> العودة لتسجيل الدخول
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- لوحة الموظف (المعلم / الوكيل / الموجه / ...) -->
+    <div id="userDashboard" class="hidden">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h4 class="text-primary fw-bold mb-0">
+          <i class="bi bi-folder2-open"></i> ملف الشواهد الخاص بك
+        </h4>
+
+        <div class="d-flex gap-2">
+          <a href="https://moe.gov.sa/ar/performance/Documents/Guide-for-Educational-Job-Holders.pdf" target="_blank"
+            class="btn btn-sm btn-outline-info shadow-sm">
+            <i class="bi bi-book-half"></i> الدليل الإرشادي
+          </a>
+
+          <button onclick="refreshFiles()" class="btn btn-sm btn-outline-secondary shadow-sm">
+            <i class="bi bi-arrow-clockwise"></i> تحديث الملفات
+          </button>
+        </div>
+      </div>
+
+      <!-- بطاقات الإحصائيات الفردية بتنسيق الهوية الملكية -->
+      <div class="row g-3 mb-4">
+        <!-- كرت إجمالي المؤشرات -->
+        <div class="col-md-4">
+          <div class="card stat-card-navy shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <span class="small opacity-75 d-block mb-1">إجمالي المؤشرات المطلوبة</span>
+                <h3 id="totalIndicators" class="fw-bold mb-0">0</h3>
+              </div>
+              <div class="stat-card-icon">
+                <i class="bi bi-card-checklist"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- كرت الشواهد المرفوعة -->
+        <div class="col-md-4">
+          <div class="card stat-card-gold shadow-sm p-3 h-100">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <span class="small opacity-90 d-block mb-1">شواهد تم رفعها</span>
+                <h3 id="uploadedShawahid" class="fw-bold mb-0">0</h3>
+              </div>
+              <div class="stat-card-icon">
+                <i class="bi bi-cloud-arrow-up-fill"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- كرت نسبة الإنجاز العامة -->
+        <div class="col-md-4">
+          <div class="card stat-card-progress shadow-sm p-3 h-100 d-flex justify-content-center">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="small fw-bold text-muted">نسبة الإنجاز العامة</span>
+              <span id="completionText" class="badge bg-primary fs-6 px-2 py-1">0%</span>
+            </div>
+            <div class="progress rounded-pill shadow-inner" style="height: 12px; background-color: #e2e8f0;">
+              <div id="completionBar" class="progress-bar rounded-pill" role="progressbar" style="width: 0%; background: linear-gradient(90deg, #b8860b, #d4af37);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- شواهد الموظف الموزعة حسب التصنيفات والمؤشرات -->
+      <div class="card border-0 shadow-sm mb-4">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center" style="cursor: pointer;"
+          data-bs-toggle="collapse" data-bs-target="#collapseShawahid">
+          <div>
+            <h5 class="mb-0 text-primary fw-bold">
+              <i class="bi bi-grid-3x3-gap-fill me-2"></i> استعراض الشواهد المرفوعة
+            </h5>
+            <small class="text-success d-block mt-1">
+              <i class="bi bi-info-circle me-1"></i> يُستحسن تجميع شواهد الصور لكل عنصر في ملف واحد بدل رفع صور متعددة.
+            </small>
+          </div>
+          <i class="bi bi-chevron-down transition-icon" id="toggleIcon"></i>
+        </div>
+
+        <div id="collapseShawahid" class="collapse show">
+          <div class="card-body bg-white">
+            <div id="shawahidContainer" class="row g-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- لوحة المشرف العام / المدير -->
+    <div id="adminDashboard" class="hidden">
+      <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <div>
+          <h3 class="text-dark fw-bold mb-1">
+            <i class="bi bi-shield-lock-fill text-warning"></i> لوحة الإشراف العام
+          </h3>
+          <span class="text-muted small">متابعة إحصائيات الموظفين، إدارة الشواهد، وتكريم المتميزين</span>
+        </div>
+        <button onclick="refreshAdminData()" class="btn btn-outline-primary btn-sm shadow-sm rounded-pill px-3 py-1">
+          <i class="bi bi-arrow-clockwise" id="refreshIcon"></i> تحديث البيانات
+        </button>
+      </div>
+
+      <!-- الإحصائيات الإجمالية وتوزيع الأدوار -->
+      <div class="row mb-4 g-3">
+        <!-- كرت المستخدمين -->
+        <div class="col-md-3">
+          <div class="card stat-card-navy shadow-sm p-3 text-center h-100" onclick="showUsersDetails()"
+            style="cursor: pointer;" title="انقر لعرض قائمة المستخدمين">
+            <span class="small opacity-75 d-block mb-1">إجمالي المستخدمين</span>
+            <h2 id="statUsers" class="fw-bold my-1">0</h2>
+            <small class="badge bg-white bg-opacity-25 rounded-pill px-2 py-1 mt-1"><i class="bi bi-eye"></i> انقر للتفاصيل</small>
+          </div>
+        </div>
+
+        <!-- كرت إجمالي الملفات -->
+        <div class="col-md-3">
+          <div class="card stat-card-files shadow-sm p-3 text-center h-100">
+            <span class="small opacity-90 d-block mb-1">إجمالي الملفات المرفوعة</span>
+            <h2 id="statFiles" class="fw-bold my-1">0</h2>
+            <small class="opacity-75">في مجلد الدرايف المعتمد</small>
+          </div>
+        </div>
+
+        <!-- كرت توزيع الموظفين حسب الدور -->
+        <div class="col-md-6">
+          <div class="card p-3 h-100 shadow-sm border-0" style="border-top: 3px solid #1e3a8a !important;">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h6 class="small fw-bold text-muted mb-0"><i class="bi bi-people-fill text-primary me-1"></i> توزيع الموظفين حسب الدور</h6>
+              <span class="badge bg-light text-dark border small">تحديث فوري</span>
+            </div>
+            <div id="rolesDist" class="d-flex justify-content-around align-items-center mt-2 flex-wrap gap-1"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- آخر الشواهد المرفوعة -->
+      <h5 class="admin-section-title mt-4"><i class="bi bi-clock-history"></i> آخر الشواهد المرفوعة</h5>
+      <div class="card p-0 mt-3 overflow-hidden shadow-sm border-0">
+        <div class="table-responsive">
+          <table class="table table-sm table-hover small mb-0">
+            <thead class="blue-gradient-header">
+              <tr>
+                <th>الموظف</th>
+                <th>الشاهد</th>
+                <th>الملف</th>
+                <th>إجراءات</th>
+              </tr>
+            </thead>
+            <tbody id="recentFilesBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- إحصائيات إنجاز الموظفين -->
+      <div class="card mt-4 mb-4 shadow-sm border-0 overflow-hidden">
+        <div class="card-header text-white d-flex justify-content-between align-items-center py-3" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); border-bottom: 2px solid rgba(212, 175, 55, 0.4);">
+          <h6 class="mb-0 fw-bold"><i class="bi bi-bar-chart-fill me-1 text-warning"></i> إحصائيات إنجاز الموظفين</h6>
+          <span class="badge bg-white bg-opacity-25 rounded-pill px-2">ترتيب الشواهد</span>
+        </div>
+        <div class="card-body">
+          <div id="statsContainer" class="row row-cols-1 row-cols-md-2 g-2"></div>
+          <div class="text-center mt-3 pt-2 border-top">
+            <button class="btn btn-sm btn-link text-decoration-none fw-bold text-primary" onclick="showAllStats()">
+              عرض ترتيب جميع الموظفين <i class="bi bi-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- الشواهد المميزة -->
+      <div class="d-flex justify-content-between align-items-center mb-3 mt-4">
+        <h5 class="admin-section-title mb-0">
+          <i class="bi bi-star-fill text-warning"></i> لوحة الشواهد المميزة
+        </h5>
+        <span class="badge rounded-pill px-3 py-1 small" style="background: linear-gradient(135deg, #0f172a, #1e3a8a); color: #f9f0b3; border: 1px solid rgba(212,175,55,0.4);">
+          ⭐ شواهد متميزة مختارة
+        </span>
+      </div>
+
+      <div class="card p-0 overflow-hidden shadow-sm border-0 mb-4" style="border: 1px solid rgba(212, 175, 55, 0.3) !important;">
+        <div class="scrollable-table-container bg-white">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="sticky-top gold-gradient-header">
+                <tr>
+                  <th>الموظف</th>
+                  <th>الشاهد</th>
+                  <th>الملف</th>
+                  <th>التاريخ</th>
+                  <th class="text-center" style="width: 100px;">إجراءات</th>
+                </tr>
+              </thead>
+              <tbody id="featuredTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- استعراض حسب الموظف -->
+      <h5 class="admin-section-title mt-5"><i class="bi bi-person-lines-fill"></i> استعراض حسب الموظف</h5>
+      <div class="card p-4 mb-4 shadow-sm border-0">
+        <div class="input-group mb-3">
+          <span class="input-group-text bg-light border-end-0"><i class="bi bi-search text-muted"></i></span>
+          <input type="text" id="userSearchInput" class="form-control border-start-0" placeholder="اكتب اسم الموظف للبحث في القائمة..." onkeyup="filterUserList()">
+        </div>
+        <select id="userSel" class="form-select mb-2" onchange="viewStaff(this.value)">
+          <option value="">-- اختر موظفاً لاستعراض شواهده --</option>
+        </select>
+      </div>
+
+      <!-- بحث مخصص (موظف + شاهد) -->
+      <h5 class="admin-section-title mt-4"><i class="bi bi-funnel-fill"></i> بحث مخصص (موظف + شاهد)</h5>
+      <div class="card p-4 mb-5 bg-white shadow-sm border-0">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <label class="small fw-bold mb-1 text-muted">اسم الموظف:</label>
+            <div class="input-group input-group-sm mb-2">
+              <span class="input-group-text bg-light border-end-0"><i class="bi bi-filter text-muted"></i></span>
+              <input type="text" id="advUserSearchInput" class="form-control border-start-0" placeholder="ابحث بالاسم..." onkeyup="filterAdvUserList()">
+            </div>
+            <select id="advUserSel" class="form-select" onchange="updateAdvCatList()">
+              <option value="">-- اختر الموظف من القائمة --</option>
+            </select>
+          </div>
+
+          <div class="col-md-5">
+            <label class="small fw-bold mb-1 text-muted">الشاهد المستهدف:</label>
+            <div class="mb-2" style="height: 31px;"></div>
+            <select id="advCatSel" class="form-select">
+              <option value="">-- اختر الشاهد --</option>
+            </select>
+          </div>
+
+          <div class="col-md-3 d-flex align-items-end">
+            <button onclick="searchByUserAndCat()" class="btn btn-primary w-100 shadow-sm py-2 fw-bold" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); border: none;">
+              <i class="bi bi-search me-1"></i> استعراض الملفات
+            </button>
+          </div>
+        </div>
+
+        <div id="advSearchResults" class="mt-4 hidden">
+          <div class="d-flex justify-content-between align-items-center border-bottom pb-2 mb-3">
+            <h6 class="mb-0 text-secondary small fw-bold">نتائج البحث في الشاهد المختار:</h6>
+            <span id="resultCount" class="badge bg-secondary">0 ملف</span>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-sm table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>الملف</th>
+                  <th class="text-center" style="width: 80px;">معاينة</th>
+                </tr>
+              </thead>
+              <tbody id="advResBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- نوافذ Modal منبثقة -->
+
+  <!-- Modal استعراض شواهد الموظف -->
+  <div class="modal fade" id="staffModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">شواهد الموظف</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>التصنيف</th>
+                  <th>الملف</th>
+                  <th class="text-end">معاينة</th>
+                </tr>
+              </thead>
+              <tbody id="staffFilesBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal تفاصيل المستخدمين المسجلين بتنسيق الهوية الملكية -->
+  <div class="modal fade" id="usersDetailsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="modal-header py-3 px-4" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #1e3a8a 100%); border-bottom: 2px solid rgba(212, 175, 55, 0.4);">
+          <div class="d-flex align-items-center gap-2">
+            <div class="bg-white bg-opacity-10 text-warning rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 38px; height: 38px;">
+              <i class="bi bi-people-fill fs-5"></i>
+            </div>
+            <div>
+              <h5 class="modal-title fw-bold text-white mb-0">قائمة المستخدمين المسجلين</h5>
+              <span class="text-white-50 small" style="font-size: 0.75rem;">استعراض بيانات حسابات الموظفين وأدوارهم</span>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="p-3 bg-light border-bottom d-flex justify-content-between align-items-center">
+          <div class="input-group input-group-sm w-50">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="modalUserSearch" class="form-control border-start-0" placeholder="بحث بالاسم أو البريد..." onkeyup="filterModalUsers()">
+          </div>
+          <span id="modalUsersCount" class="badge rounded-pill px-3 py-2" style="background: #0f172a; color: #f9f0b3; border: 1px solid rgba(212,175,55,0.4);">0 مستخدم</span>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="table-responsive" style="max-height: 440px; overflow-y: auto;">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="sticky-top" style="background: #1e293b; color: #ffffff;">
+                <tr style="border-bottom: 2px solid #b8860b;">
+                  <th class="py-2 px-3 text-white">#</th>
+                  <th class="py-2 px-3 text-white">الاسم الكامل</th>
+                  <th class="py-2 px-3 text-white">البريد الإلكتروني</th>
+                  <th class="py-2 px-3 text-center text-white">الوظيفة / الدور</th>
+                </tr>
+              </thead>
+              <tbody id="usersDetailsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light py-2 px-3 border-top">
+          <button type="button" class="btn btn-sm btn-secondary rounded-pill px-4" data-bs-dismiss="modal">إغلاق</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal الترتيب العام للموظفين -->
+  <div class="modal fade" id="allStatsModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-light">
+          <h5 class="modal-title">الترتيب العام للموظفين حسب عدد الشواهد</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0">
+          <ul id="fullStatsList" class="list-group list-group-flush"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal تعديل بيانات الحساب -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title"><i class="bi bi-person-gear me-2"></i>تعديل بيانات الحساب</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form id="editProfileForm">
+            <div class="mb-3">
+              <label class="form-label small fw-bold">الاسم الكامل</label>
+              <input type="text" id="editFullName" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">البريد الإلكتروني (تسجيل الدخول)</label>
+              <div class="input-group">
+                <span class="input-group-text bg-light"><i class="bi bi-envelope-fill"></i></span>
+                <input type="email" id="editUsername" class="form-control" placeholder="name@domain.com" required>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label small fw-bold">كلمة المرور الجديدة</label>
+              <div class="input-group">
+                <input type="password" id="editPassword" class="form-control" placeholder="اتركها فارغة إذا لم تُرِد التغيير">
+                <button class="btn btn-outline-secondary" type="button" onclick="togglePassword('editPassword')">
+                  <i class="bi bi-eye"></i>
+                </button>
+              </div>
+            </div>
+            <hr>
+            <div class="d-grid">
+              <button type="submit" id="saveProfileBtn" class="btn btn-primary">حفظ التغييرات</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- الفوتر -->
+  <footer class="custom-footer text-white">
+    <div class="footer-container-custom">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2" style="font-size: 0.78rem;">
+        <div class="opacity-75">
+          <span>نظام إدارة شواهد الأداء الوظيفي</span>
+          <span class="mx-2 text-white-50">|</span>
+          <span>جميع الحقوق محفوظة &copy; <span id="currentYear">2026</span></span>
+        </div>
+
+        <div class="footer-pill-credits">
+          <span class="opacity-60" style="font-size: 0.72rem;">فكرة:</span>
+          <span class="developer-name">خالد المالكي</span>
+          <span class="text-white-50" style="font-size: 0.65rem;">•</span>
+          <span class="opacity-60" style="font-size: 0.72rem;">تطوير:</span>
+          <span class="developer-name">عبدالرزاق المعلوي</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- المكتبات البرمجية -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- الكود التشغيلي ومحول Google Apps Script API -->
+  <script>
+    // ==========================================
+    // إعدادات رابط الـ Web App API الخاص بـ Apps Script
+    // ==========================================
+    const DEFAULT_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_ATl-HS63-QVssifXK3OdIRhRVOZa6ecaaj_PpGVjWAfzwN0Eqk8-rNcyfU09yv4qUg/exec";
+    
+    function getScriptUrl() {
+      // إرجاع الرابط الافتراضي مباشرة بعد تحديثه
+      return DEFAULT_SCRIPT_URL;
+    }
+
+    function configureApiUrl() {
+      const currentUrl = getScriptUrl();
+      Swal.fire({
+        title: 'إعداد رابط الخادم (API)',
+        input: 'url',
+        inputLabel: 'أدخل رابط نشر تطبيق الويب (Google Apps Script Web App URL):',
+        inputValue: currentUrl,
+        showCancelButton: true,
+        confirmButtonText: 'حفظ الرابط',
+        cancelButtonText: 'إلغاء',
+        confirmButtonColor: '#198754'
+      }).then((result) => {
+        if (result.isConfirmed && result.value) {
+          localStorage.setItem('shawahid_script_url', result.value.trim());
+          Swal.fire('تم الحفظ', 'تم تحديث رابط الخادم بنجاح.', 'success');
+        }
+      });
+    }
+
+    // محرك استدعاء الـ API بطريقة fetch بدلاً من google.script.run
+    async function callApi(action, payload = {}) {
+      const url = getScriptUrl();
+      const bodyData = { action: action, ...payload };
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8' // متوافق مع CORS في Google Apps Script Web App
+        },
+        body: JSON.stringify(bodyData)
+      });
+
+      if (!response.ok) {
+        throw new Error('فشل الاتصال بالخادم: ' + response.statusText);
+      }
+
+      return await response.json();
+    }
+
+    // متوافق مع استدعاءات google.script.run بنمط الـ Chaining
+    function createRunner(successCallback, failureCallback) {
+      function makeInvoker(sCb, fCb) {
+        return new Proxy({}, {
+          get(target, prop) {
+            if (prop === 'withSuccessHandler') {
+              return function(newSuccess) {
+                return makeInvoker(newSuccess, fCb);
+              };
+            }
+            if (prop === 'withFailureHandler') {
+              return function(newFailure) {
+                return makeInvoker(sCb, newFailure);
+              };
+            }
+            // استدعاء دالة الـ API مباشرة
+            return async function(...args) {
+              try {
+                let payload = {};
+                if (prop === 'login') {
+                  payload = { username: args[0], password: args[1] };
+                } else if (prop === 'registerUser') {
+                  payload = { fullname: args[0], username: args[1], password: args[2], role: args[3] };
+                } else if (prop === 'getStructureByRole') {
+                  payload = { role: args[0] };
+                } else if (prop === 'getUserFiles' || prop === 'getStaffFiles') {
+                  payload = { username: args[0] };
+                } else if (prop === 'uploadFile') {
+                  payload = { data: args[0], fileName: args[1], category: args[2], indicator: args[3], username: args[4] };
+                } else if (prop === 'deleteFile' || prop === 'removeFromFeatured') {
+                  payload = { fileId: args[0] };
+                } else if (prop === 'addToFeatured') {
+                  payload = { fileData: args[0] };
+                } else if (prop === 'getUserStats') {
+                  payload = { username: args[0], role: args[1] };
+                } else if (prop === 'getFilesByIndicator') {
+                  payload = { category: args[0], indicator: args[1] };
+                } else if (prop === 'updateUserProfile') {
+                  payload = { data: args[0] };
+                } else if (prop === 'recoverPassword') {
+                  payload = { email: args[0] };
+                }
+
+                const result = await callApi(prop, payload);
+                if (sCb) sCb(result);
+              } catch (err) {
+                if (fCb) fCb(err);
+                else {
+                  console.error('API Error in ' + prop + ':', err);
+                  Swal.fire('خطأ في الاتصال', err.message || err.toString(), 'error');
+                }
+              }
+            };
+          }
+        });
+      }
+      return makeInvoker(successCallback, failureCallback);
+    }
+
+    const apiBridge = createRunner(null, null);
+
+    // استبدال google.script.run بالـ apiBridge لتعمل نفس الدوال الأصلية بسلاسة
+    const googleScriptRunner = apiBridge;
+
+    // ==========================================
+    // كود تطبيق الواجهة والمنطق (App Logic)
+    // ==========================================
+    var currentUser = null;
+    var globalStructure = null;
+    let allStatsData = [];
+
+    function showSection(id) {
+      var sections = ['loginSection', 'registerSection', 'userDashboard', 'adminDashboard'];
+      sections.forEach(function(s) {
+        var el = document.getElementById(s);
+        if (el) el.classList.add('hidden');
+      });
+      var target = document.getElementById(id);
+      if (target) target.classList.remove('hidden');
+    }
+
+    function handleLogin() {
+      var u = document.getElementById('user').value.trim().toLowerCase();
+      var p = document.getElementById('pass').value.trim();
+
+      if (!u || !p) {
+        Swal.fire('تنبيه', 'يرجى إدخال البريد الإلكتروني وكلمة المرور', 'warning');
+        return;
+      }
+
+      var loginBtn = document.getElementById('loginBtn');
+      if (loginBtn) {
+        loginBtn.innerText = 'جاري التحقق...';
+        loginBtn.disabled = true;
+      }
+
+      googleScriptRunner
+        .withSuccessHandler(function(res) {
+          if (loginBtn) {
+            loginBtn.innerText = 'دخول';
+            loginBtn.disabled = false;
+          }
+
+          if (res && res.success) {
+            currentUser = res;
+            localStorage.setItem('savedUser', JSON.stringify(res));
+
+            document.getElementById('userInfoContainer').classList.remove('hidden');
+            document.getElementById('userInfo').innerText = 'أهلاً: ' + res.name;
+
+            if (res.role === 'مدير') {
+              initAdmin();
+            } else {
+              initUser();
+            }
+          } else {
+            Swal.fire({
+              icon: 'info',
+              title: '<span style="color:#0d6efd">تنبيه</span>',
+              html: 'اسم المستخدم أو كلمة المرور غير صحيحة',
+              iconColor: '#0d6efd',
+              confirmButtonText: 'إعادة المحاولة',
+              confirmButtonColor: '#198754'
+            });
+          }
+        })
+        .withFailureHandler(function(err) {
+          if (loginBtn) {
+            loginBtn.innerText = 'دخول';
+            loginBtn.disabled = false;
+          }
+          Swal.fire('خطأ في الاتصال', 'تعذر الاتصال بالخادم: ' + err.message, 'error');
+        })
+        .login(u, p);
+    }
+
+    function handleLogout() {
+      Swal.fire({
+        title: 'تنبيه الخروج',
+        text: "هل أنت متأكد من رغبتك في تسجيل الخروج من حسابك؟",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#0d6efd',
+        cancelButtonColor: '#198754',
+        confirmButtonText: 'نعم، خروج',
+        cancelButtonText: 'إبقاء الجلسة',
+        reverseButtons: true,
+        background: '#ffffff'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          executeFinalLogout();
+        }
+      });
+    }
+
+    function executeFinalLogout() {
+      document.getElementById('adminDashboard')?.classList.add('hidden');
+      document.getElementById('userDashboard')?.classList.add('hidden');
+      document.getElementById('userInfoContainer')?.classList.add('hidden');
+
+      showSection('loginSection');
+
+      if (document.getElementById('user')) document.getElementById('user').value = "";
+      if (document.getElementById('pass')) document.getElementById('pass').value = "";
+
+      localStorage.removeItem('savedUser');
+      currentUser = null;
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'تم الخروج بنجاح',
+        showConfirmButton: false,
+        timer: 1500,
+        toast: true
+      });
+
+      window.scrollTo(0, 0);
+    }
+
+    function initAdmin() {
+      showSection('adminDashboard');
+      refreshStats();
+      getRecentFiles();
+      refreshFeaturedList();
+      populateUserSelect();
+      populateAdvUserSelect();
+      loadStaffStats();
+    }
+
+    function getRecentFiles() {
+      const body = document.getElementById('recentFilesBody');
+      if (!body) return;
+
+      googleScriptRunner.withSuccessHandler(function(files) {
+        body.innerHTML = '';
+        if (!files || files.length === 0) {
+          body.innerHTML = '<tr><td colspan="4" class="text-center py-3 text-muted">لا توجد شواهد مرفوعة حالياً</td></tr>';
+          return;
+        }
+
+        files.forEach(f => {
+          const fileData = JSON.stringify(f).replace(/"/g, '&quot;');
+          const btnClass = f.isFeatured ? 'btn-warning' : 'btn-outline-warning';
+          const iconClass = f.isFeatured ? 'bi-star-fill' : 'bi-star';
+
+          body.innerHTML += `
+            <tr class="text-center align-middle">
+              <td>${f.fullName}</td>
+              <td><small>${f.category}</small></td>
+              <td><small class="d-inline-block text-truncate text-muted" style="max-width: 150px;" title="${f.fileName}">${f.fileName}</small></td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="https://drive.google.com/file/d/${f.fileId}/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary" title="معاينة"><i class="bi bi-eye"></i></a>
+                  <button id="btn_${f.fileId}" onclick="markAsFeatured(${fileData}, 'btn_${f.fileId}')" class="btn btn-sm ${btnClass}" title="تمييز الشاهد">
+                    <i class="bi ${iconClass}"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
+        });
+      }).getRecentFiles();
+    }
+
+    function refreshFeaturedList() {
+      const body = document.getElementById('featuredTableBody');
+      if (!body) return;
+
+      googleScriptRunner.withSuccessHandler(function(list) {
+        body.innerHTML = (!list || list.length === 0) ? '<tr><td colspan="5" class="text-center p-3 text-muted">لا توجد شواهد مميزة حالياً</td></tr>' : '';
+
+        list.forEach(item => {
+          body.innerHTML += `
+            <tr class="featured-row-item">
+              <td>
+                <div class="d-flex align-items-center gap-2">
+                  <i class="bi bi-star-fill featured-badge-star small"></i>
+                  <span class="fw-bold text-dark">${item.fullName}</span>
+                </div>
+              </td>
+              <td><span class="badge bg-light text-dark border small">${item.category}</span></td>
+              <td>
+                <span class="d-inline-block text-truncate text-muted small" style="max-width: 170px;" title="${item.fileName}">
+                  <i class="bi bi-file-earmark-text me-1 text-primary"></i>${item.fileName}
+                </span>
+              </td>
+              <td><span class="badge bg-light text-muted fw-normal small">${item.date}</span></td>
+              <td class="text-center">
+                <div class="btn-group">
+                  <a href="https://drive.google.com/file/d/${item.fileId}/view?usp=sharing" target="_blank" 
+                     class="btn btn-sm btn-outline-primary py-1 px-2" title="معاينة الملف">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <button onclick="deleteFromFeatured('${item.fileId}')" 
+                          class="btn btn-sm btn-outline-danger py-1 px-2" title="إزالة من التميز">
+                    <i class="bi bi-trash"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
+        });
+      }).getFeaturedFiles();
+    }
+
+    function initUser() {
+      const container = document.getElementById('shawahidContainer');
+      container.innerHTML = `
+        <div class="text-center w-100 p-5">
+          <div class="spinner-border text-primary"></div>
+          <p class="mt-2 text-muted">جاري بناء لوحة الشواهد والإحصائيات...</p>
+        </div>`;
+
+      showSection('userDashboard');
+      refreshUserDashboardStats();
+
+      googleScriptRunner.withSuccessHandler(function(res) {
+        container.innerHTML = '';
+        if (!res || !res.order || res.order.length === 0) {
+          container.innerHTML = '<div class="alert alert-info w-100">لا توجد مؤشرات مسجلة لهذا الدور الوظيفي.</div>';
+          return;
+        }
+
+        res.order.forEach(function(cat, catIdx) {
+          const card = document.createElement('div');
+          card.className = 'col-12 mb-3';
+          const collapseId = `collapseCat_${catIdx}`;
+          const headerStatusId = `headerStatus_${catIdx}`;
+          let indicatorsHtml = '';
+          const indicators = res.details[cat] || [];
+
+          indicators.forEach(function(ind, indIdx) {
+            const boxId = `box_${catIdx}_${indIdx}`;
+            const rowId = `row_${catIdx}_${indIdx}`;
+            const statusId = `status_${catIdx}_${indIdx}`;
+
+            indicatorsHtml += `
+              <div id="${rowId}" class="p-3 shadow-sm mb-2 indicator-row">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <div class="d-flex align-items-center gap-2">
+                    <span class="badge rounded-circle p-1 d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; background: rgba(30,58,138,0.1); color: #1e3a8a;">
+                      <i class="bi bi-check2"></i>
+                    </span>
+                    <span class="fw-bold text-dark small" style="letter-spacing: -0.2px;">
+                      ${ind}
+                    </span>
+                  </div>
+                  <span id="${statusId}" class="badge rounded-pill status-badge-pending px-2 py-1">قيد الانتظار</span>
+                </div>
+                <div class="row g-2 align-items-center mt-1 pt-2 border-top border-light">
+                  <div class="col-sm-auto">
+                    <label class="btn btn-upload-custom mb-0 shadow-sm cursor-pointer">
+                      <i class="bi bi-cloud-arrow-up-fill me-1" style="color: #b8860b;"></i> رفع شاهد
+                      <input type="file" class="hidden" style="display:none" 
+                             accept=".pdf,.png,.jpg,.jpeg,.docx,.xlsx,.mp4,.mp3"
+                             onchange="up(this, '${cat.replace(/'/g, "")}', '${ind.replace(/'/g, "")}')">
+                    </label>
+                  </div>
+                  <div id="${boxId}" class="col d-flex flex-wrap gap-2 file-box-container align-items-center"></div>
+                </div>
+              </div>`;
+          });
+
+          card.innerHTML = `
+            <div class="card border-0 shadow-sm overflow-hidden">
+              <div class="card-header bg-dark text-white p-3 d-flex justify-content-between align-items-center" 
+                   style="cursor: pointer;" data-bs-toggle="collapse" data-bs-target="#${collapseId}">
+                <div class="d-flex align-items-center gap-2">
+                  <h6 class="mb-0"><i class="bi bi-collection-play me-2 text-warning"></i> ${cat}</h6>
+                  <span id="${headerStatusId}" class="badge rounded-pill bg-secondary small fw-normal" style="font-size: 0.7rem;">جاري التحقق..</span>
+                </div>
+                <i class="bi bi-chevron-down transition-icon small"></i>
+              </div>
+              <div id="${collapseId}" class="collapse">
+                <div class="card-body bg-light p-3">${indicatorsHtml}</div>
+              </div>
+            </div>`;
+          container.appendChild(card);
+        });
+
+        setTimeout(refreshFiles, 400);
+      }).getStructureByRole(currentUser.role);
+    }
+
+    function refreshUserDashboardStats() {
+      if (!currentUser) return;
+
+      googleScriptRunner.withSuccessHandler(function(stats) {
+        document.getElementById('totalIndicators').textContent = stats.totalRequired || 0;
+        document.getElementById('uploadedShawahid').textContent = stats.totalFiles || 0;
+        document.getElementById('completionText').textContent = (stats.percentage || 0) + '%';
+        const bar = document.getElementById('completionBar');
+        if (bar) {
+          bar.style.width = (stats.percentage || 0) + '%';
+          if (stats.percentage < 50) {
+            bar.style.background = "linear-gradient(90deg, #dc2626, #ef4444)";
+          } else if (stats.percentage < 90) {
+            bar.style.background = "linear-gradient(90deg, #b8860b, #eab308)";
+          } else {
+            bar.style.background = "linear-gradient(90deg, #0d9488, #10b981)";
+          }
+        }
+      }).getUserStats(currentUser.username, currentUser.role);
+    }
+
+    function refreshFiles() {
+      if (!currentUser) return;
+
+      googleScriptRunner.withSuccessHandler(function(files) {
+        document.querySelectorAll('[id^="box_"]').forEach(el => el.innerHTML = '');
+        document.querySelectorAll('.indicator-row').forEach(row => {
+          row.classList.remove('indicator-completed');
+        });
+        document.querySelectorAll('[id^="status_"]').forEach(status => {
+          status.className = 'badge rounded-pill status-badge-pending px-2 py-1';
+          status.innerHTML = 'قيد الانتظار';
+        });
+
+        googleScriptRunner.withSuccessHandler(function(res) {
+          let categoryProgress = {};
+          let totalIndicatorsCount = 0;
+          let uniqueCompletedIndicators = new Set();
+
+          res.order.forEach(cat => {
+            totalIndicatorsCount += (res.details[cat] ? res.details[cat].length : 0);
+          });
+
+          if (files && files.length > 0) {
+            files.forEach(function(f) {
+              res.order.forEach(function(cat, cIdx) {
+                if (cat === f[1]) {
+                  res.details[cat].forEach(function(ind, iIdx) {
+                    if (ind === f[2]) {
+                      const container = document.getElementById(`box_${cIdx}_${iIdx}`);
+                      const row = document.getElementById(`row_${cIdx}_${iIdx}`);
+                      const status = document.getElementById(`status_${cIdx}_${iIdx}`);
+
+                      if (container) {
+                        container.innerHTML += `
+                          <div class="file-badge-pill">
+                            <i class="bi bi-file-earmark-check-fill" style="color: #10b981;"></i>
+                            <a href="${f[5]}" target="_blank" class="text-truncate" title="اضغط لمعاينة الملف">
+                              ${f[4]}
+                            </a>
+                            <i class="bi bi-trash3 text-danger ms-1" style="cursor:pointer;" 
+                              title="حذف الملف" onclick="del('${f[3]}')"></i>
+                          </div>`;
+
+                        if (row) {
+                          row.classList.add('indicator-completed');
+                        }
+                        if (status) {
+                          status.className = 'badge rounded-pill status-badge-done px-2 py-1';
+                          status.innerHTML = '<i class="bi bi-check-circle-fill me-1"></i> مكتمل';
+                        }
+
+                        uniqueCompletedIndicators.add(cat + " - " + ind);
+
+                        if (!categoryProgress[cIdx]) categoryProgress[cIdx] = new Set();
+                        categoryProgress[cIdx].add(ind);
+                      }
+                    }
+                  });
+                }
+              });
+            });
+          }
+
+          res.order.forEach(function(cat, cIdx) {
+            const headerBadge = document.getElementById(`headerStatus_${cIdx}`);
+            const headerDiv = headerBadge ? headerBadge.closest('.card-header') : null;
+            const totalInCat = res.details[cat] ? res.details[cat].length : 0;
+            const uploadedInCat = categoryProgress[cIdx] ? categoryProgress[cIdx].size : 0;
+
+            if (headerBadge && headerDiv) {
+              if (uploadedInCat === totalInCat && totalInCat > 0) {
+                headerBadge.className = 'badge rounded-pill bg-white text-success fw-bold';
+                headerBadge.innerHTML = '<i class="bi bi-check-all"></i> مكتمل';
+                headerDiv.style.backgroundColor = '#198754';
+                headerDiv.classList.remove('bg-dark');
+              } else if (uploadedInCat > 0) {
+                headerBadge.className = 'badge rounded-pill bg-warning text-dark';
+                headerBadge.innerHTML = `مكتمل (${uploadedInCat} من ${totalInCat})`;
+                headerDiv.style.backgroundColor = '';
+                headerDiv.classList.add('bg-dark');
+              } else {
+                headerBadge.className = 'badge rounded-pill bg-danger text-white';
+                headerBadge.innerHTML = 'قيد الانتظار';
+                headerDiv.style.backgroundColor = '';
+                headerDiv.classList.add('bg-dark');
+              }
+            }
+          });
+
+          const percentage = totalIndicatorsCount > 0 ? Math.round((uniqueCompletedIndicators.size / totalIndicatorsCount) * 100) : 0;
+          const mainProgressBar = document.getElementById('completionBar');
+          const mainProgressText = document.getElementById('completionText');
+
+          if (mainProgressBar) {
+            mainProgressBar.style.width = percentage + '%';
+            if (percentage < 35) {
+              mainProgressBar.className = 'progress-bar bg-danger progress-bar-striped progress-bar-animated';
+            } else if (percentage < 100) {
+              mainProgressBar.className = 'progress-bar bg-warning text-dark progress-bar-striped progress-bar-animated';
+            } else {
+              mainProgressBar.className = 'progress-bar bg-success';
+            }
+          }
+          if (mainProgressText) mainProgressText.innerText = percentage + '%';
+
+        }).getStructureByRole(currentUser.role);
+      }).getUserFiles(currentUser.username);
+    }
+
+    function up(input, cat, ind) {
+      if (!input.files || input.files.length === 0) return;
+
+      const file = input.files[0];
+      const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
+
+      if (file.size > maxSizeInBytes) {
+        Swal.fire('حجم الملف كبير', 'الحد الأقصى للملف هو 10 ميجابايت.', 'warning');
+        input.value = '';
+        return;
+      }
+
+      const container = input.closest('.row').querySelector('[id^="box_"]');
+      const statusId = "status_" + Math.random().toString(36).substr(2, 9);
+      if (container) {
+        container.innerHTML += `<div id="${statusId}" class="spinner-border spinner-border-sm text-primary"></div>`;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        if (file.type.startsWith('image/')) {
+          const img = new Image();
+          img.src = e.target.result;
+          img.onload = function() {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+
+            const MAX_WIDTH = 1200;
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.7);
+            sendToServer(compressedDataUrl, file.name, cat, ind, statusId, input);
+          };
+        } else {
+          sendToServer(e.target.result, file.name, cat, ind, statusId, input);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function sendToServer(bytes, fileName, cat, ind, statusId, input) {
+      googleScriptRunner
+        .withSuccessHandler(function(res) {
+          const statusEl = document.getElementById(statusId);
+          if (statusEl) statusEl.remove();
+          Swal.fire({
+            icon: 'success',
+            title: 'تم الرفع بنجاح',
+            text: 'تم حفظ الشاهد في مجلد الدرايف: ' + fileName,
+            timer: 2000,
+            showConfirmButton: false
+          });
+          refreshFiles();
+          refreshUserDashboardStats();
+          input.value = '';
+        })
+        .withFailureHandler(function(err) {
+          Swal.fire('خطأ في الرفع', err.message || err.toString(), 'error');
+          const statusEl = document.getElementById(statusId);
+          if (statusEl) statusEl.remove();
+        })
+        .uploadFile(bytes, fileName, cat, ind, currentUser.username);
+    }
+
+    function del(fileId) {
+      Swal.fire({
+        title: 'تأكيد الحذف',
+        text: 'هل أنت متأكد من حذف هذا الشاهد نهائياً من الدرايف والجدول؟',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'نعم، احذف',
+        cancelButtonText: 'إلغاء'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          googleScriptRunner
+            .withSuccessHandler(function() {
+              Swal.fire('تم الحذف', 'تم حذف الملف بنجاح', 'success');
+              refreshFiles();
+              refreshUserDashboardStats();
+            })
+            .withFailureHandler(function(err) {
+              Swal.fire('فشل الحذف', err.message || err.toString(), 'error');
+            })
+            .deleteFile(fileId);
+        }
+      });
+    }
+
+    function markAsFeatured(fileObj, btnId) {
+      var btn = document.getElementById(btnId);
+      var icon = btn.querySelector('i');
+
+      googleScriptRunner.withSuccessHandler(function(msg) {
+        if (msg && msg.includes("بنجاح")) {
+          btn.classList.remove('btn-outline-warning');
+          btn.classList.add('btn-warning');
+          icon.classList.remove('bi-star');
+          icon.classList.add('bi-star-fill');
+          Swal.fire('مميز!', msg, 'success');
+        } else {
+          Swal.fire('تنبيه', msg, 'info');
+        }
+      }).addToFeatured(fileObj);
+    }
+
+    function deleteFromFeatured(fileId) {
+      Swal.fire({
+        title: 'إلغاء التميز',
+        text: 'هل أنت متأكد من إزالة هذا الشاهد من قائمة التميز؟ (لن يتم حذف الملف الأصلي)',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'نعم، إزالة',
+        cancelButtonText: 'إلغاء'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          googleScriptRunner.withSuccessHandler(function(msg) {
+            Swal.fire('تم', msg, 'success');
+            refreshFeaturedList();
+            getRecentFiles();
+          }).removeFromFeatured(fileId);
+        }
+      });
+    }
+
+    function refreshStats() {
+      googleScriptRunner.withSuccessHandler(function(stats) {
+        document.getElementById('statUsers').innerText = stats.totalUsers || 0;
+        document.getElementById('statFiles').innerText = stats.totalFiles || 0;
+
+        var distDiv = document.getElementById('rolesDist');
+        distDiv.innerHTML = '';
+
+        const colors = {
+          "معلم": "bg-primary",
+          "وكيل": "bg-secondary",
+          "رائد نشاط": "text-white' style='background: linear-gradient(135deg, #b8860b, #d4af37)",
+          "موجه طلابي": "text-white' style='background: #0f766e",
+          "محضر مختبر": "bg-dark"
+        };
+
+        for (var role in stats.roles) {
+          distDiv.innerHTML += `
+            <div class="text-center px-2 my-1">
+              <div class="small fw-bold text-muted">${role}</div>
+              <div class="badge ${colors[role] || 'bg-secondary'} fs-6">${stats.roles[role]}</div>
+            </div>`;
+        }
+      }).getStats();
+    }
+
+    function populateUserSelect() {
+      googleScriptRunner.withSuccessHandler(function(users) {
+        const userSel = document.getElementById('userSel');
+        if (!userSel) return;
+
+        userSel.innerHTML = '<option value="">-- اختر موظفاً لاستعراض شواهده --</option>';
+        users.forEach(user => {
+          let opt = document.createElement('option');
+          opt.value = user.username;
+          opt.textContent = user.fullName + " (" + user.role + ")";
+          userSel.appendChild(opt);
+        });
+      }).getUsers();
+    }
+
+    function populateAdvUserSelect() {
+      googleScriptRunner.withSuccessHandler(function(users) {
+        const sel = document.getElementById('advUserSel');
+        if (!sel) return;
+        sel.innerHTML = '<option value="">-- اختر الموظف من القائمة --</option>';
+
+        users.forEach(u => {
+          const username = u[0];
+          const role = u[2] ? u[2].toString().trim() : "";
+          const fullName = u[3] ? u[3].toString().trim() : u[0];
+
+          if (username) {
+            let opt = document.createElement('option');
+            opt.value = username;
+            opt.text = fullName + " (" + role + ")";
+            opt.setAttribute('data-role', role);
+            sel.appendChild(opt);
+          }
+        });
+      }).getAllUsersList();
+    }
+
+    function updateAdvCatList() {
+      const sel = document.getElementById('advUserSel');
+      const selectedOption = sel.options[sel.selectedIndex];
+      const role = selectedOption.getAttribute('data-role');
+      const catSel = document.getElementById('advCatSel');
+
+      document.getElementById('advSearchResults').classList.add('hidden');
+
+      if (!role || role === "") {
+        catSel.innerHTML = '<option value="">-- اختر الشاهد --</option>';
+        return;
+      }
+
+      catSel.innerHTML = '<option disabled selected>جاري جلب شواهد (' + role + ')...</option>';
+
+      googleScriptRunner.withSuccessHandler(function(res) {
+        catSel.innerHTML = '<option value="">-- اختر الشاهد --</option>';
+        if (res && res.order && res.order.length > 0) {
+          res.order.forEach(cat => {
+            catSel.innerHTML += `<option value="${cat}">${cat}</option>`;
+          });
+        } else {
+          catSel.innerHTML = '<option value="">لا توجد شواهد مبرمجة لـ ' + role + '</option>';
+        }
+      }).getStructureByRole(role);
+    }
+
+    function searchByUserAndCat() {
+      const user = document.getElementById('advUserSel').value;
+      const cat = document.getElementById('advCatSel').value;
+      const resBody = document.getElementById('advResBody');
+      const resultsDiv = document.getElementById('advSearchResults');
+      const countBadge = document.getElementById('resultCount');
+
+      if (!user || !cat) {
+        Swal.fire('تنبيه', 'يرجى اختيار اسم الموظف والشاهد المراد البحث فيه', 'warning');
+        return;
+      }
+
+      resBody.innerHTML = '<tr><td colspan="2" class="text-center py-4"><div class="spinner-border spinner-border-sm text-primary"></div> جاري استخراج الملفات...</td></tr>';
+      resultsDiv.classList.remove('hidden');
+
+      googleScriptRunner.withSuccessHandler(function(files) {
+        resBody.innerHTML = '';
+
+        const filtered = files.filter(f => {
+          const rowUser = f[0] ? String(f[0]).trim() : "";
+          const rowCat = f[1] ? String(f[1]).trim() : "";
+          return rowUser === user.trim() && rowCat === cat.trim();
+        });
+
+        countBadge.textContent = filtered.length + ' ملف';
+
+        if (filtered.length === 0) {
+          resBody.innerHTML = '<tr><td colspan="2" class="text-center py-4 text-muted">لا توجد ملفات مرفوعة لهذا الموظف في هذا الشاهد حالياً</td></tr>';
+          return;
+        }
+
+        filtered.forEach(f => {
+          resBody.innerHTML += `
+            <tr>
+              <td><div class="small text-muted text-truncate" style="max-width: 250px;">${f[4] || 'بدون اسم'}</div></td>
+              <td class="text-center">
+                <a href="https://drive.google.com/file/d/${f[3]}/view?usp=sharing" target="_blank" 
+                   class="btn btn-sm btn-outline-primary rounded-pill px-3">
+                  <i class="bi bi-eye-fill"></i> عرض
+                </a>
+              </td>
+            </tr>`;
+        });
+      }).getUserFiles(user);
+    }
+
+    function viewStaff(username) {
+      if (!username) return;
+
+      const tableBody = document.getElementById('staffFilesBody');
+      const modalEl = document.getElementById('staffModal');
+
+      tableBody.innerHTML = '<tr><td colspan="3" class="text-center p-4"><div class="spinner-border spinner-border-sm text-primary"></div> جاري تحميل الملفات...</td></tr>';
+
+      const myModal = new bootstrap.Modal(modalEl);
+      myModal.show();
+
+      googleScriptRunner.withSuccessHandler(function(files) {
+        tableBody.innerHTML = '';
+        if (!files || files.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="3" class="text-center p-4 text-muted">لا توجد شواهد مرفوعة لهذا الموظف حالياً</td></tr>';
+          return;
+        }
+
+        files.forEach(f => {
+          const fileData = JSON.stringify(f).replace(/"/g, '&quot;');
+          const isFeatured = f.isFeatured === true || f.isFeatured === "TRUE";
+          const btnClass = isFeatured ? 'btn-warning' : 'btn-outline-warning';
+          const iconClass = isFeatured ? 'bi-star-fill' : 'bi-star';
+
+          tableBody.innerHTML += `
+            <tr class="align-middle">
+              <td><small class="fw-bold">${f.category}</small></td>
+              <td><small class="d-inline-block text-truncate text-muted" style="max-width: 180px;" title="${f.fileName}">${f.fileName}</small></td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a href="https://drive.google.com/file/d/${f.fileId}/view?usp=sharing" target="_blank" class="btn btn-sm btn-outline-primary">
+                    <i class="bi bi-eye"></i>
+                  </a>
+                  <button id="btn_modal_${f.fileId}" 
+                          onclick="markAsFeatured(${fileData}, 'btn_modal_${f.fileId}')" 
+                          class="btn btn-sm ${btnClass}">
+                    <i class="bi ${iconClass}"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>`;
+        });
+      }).getStaffFiles(username);
+    }
+
+    function refreshAdminData() {
+      const icon = document.getElementById('refreshIcon');
+      if (icon) icon.classList.add('bi-spin');
+
+      refreshStats();
+      getRecentFiles();
+      refreshFeaturedList();
+      populateUserSelect();
+      populateAdvUserSelect();
+      loadStaffStats();
+
+      setTimeout(() => {
+        if (icon) icon.classList.remove('bi-spin');
+      }, 1000);
+    }
+
+    function handleRegister() {
+      var name = document.getElementById('regName').value.trim();
+      var user = document.getElementById('regUser').value.trim().toLowerCase();
+      var pass = document.getElementById('regPass').value.trim();
+      var role = document.getElementById('regRole').value;
+
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!name || !user || !pass || !role) {
+        Swal.fire({ icon: 'warning', title: 'تنبيه', text: 'يرجى إدخال البيانات كاملة' });
+        return;
+      }
+      if (!emailRegex.test(user)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'صيغة البريد غير صحيحة',
+          text: 'يرجى إدخال بريد إلكتروني صالح مثل: name@example.com لتتمكن من استعادة كلمة المرور'
+        });
+        return;
+      }
+      if (pass.length < 4) {
+        Swal.fire({
+          icon: 'error',
+          title: 'كلمة المرور قصيرة',
+          text: 'يجب أن لا تقل كلمة المرور عن 4 خانات'
+        });
+        return;
+      }
+
+      var regBtn = document.getElementById('regBtn');
+      var originalText = regBtn.innerText;
+      regBtn.innerText = 'جاري الحفظ...';
+      regBtn.disabled = true;
+
+      googleScriptRunner
+        .withSuccessHandler(function(res) {
+          regBtn.innerText = originalText;
+          regBtn.disabled = false;
+
+          if (res === true || res.success === true) {
+            Swal.fire({
+              icon: 'success',
+              title: 'تم إنشاء الحساب بنجاح!',
+              text: 'يمكنك الآن تسجيل الدخول باستخدام بريدك الإلكتروني',
+              confirmButtonText: 'حسناً',
+              confirmButtonColor: '#198754',
+              timer: 3500,
+              timerProgressBar: true
+            });
+            showSection('loginSection');
+            document.getElementById('regName').value = '';
+            document.getElementById('regUser').value = '';
+            document.getElementById('regPass').value = '';
+          } else {
+            Swal.fire('تعذر التسجيل', res.message || 'البريد الإلكتروني مسجل مسبقاً لمستخدم آخر', 'error');
+          }
+        })
+        .withFailureHandler(function(err) {
+          regBtn.innerText = originalText;
+          regBtn.disabled = false;
+          Swal.fire('خطأ في الاتصال', err.message || err.toString(), 'error');
+        })
+        .registerUser(name, user, pass, role);
+    }
+
+    let rawModalUsers = [];
+
+    function showUsersDetails() {
+      const body = document.getElementById('usersDetailsBody');
+      body.innerHTML = '<tr><td colspan="4" class="text-center p-4"><div class="spinner-border text-primary"></div></td></tr>';
+
+      const searchInput = document.getElementById('modalUserSearch');
+      if (searchInput) searchInput.value = '';
+
+      const modal = new bootstrap.Modal(document.getElementById('usersDetailsModal'));
+      modal.show();
+
+      googleScriptRunner.withSuccessHandler(function(users) {
+        rawModalUsers = users || [];
+        renderModalUsers(rawModalUsers);
+      }).getAllUsersList();
+    }
+
+    function renderModalUsers(users) {
+      const body = document.getElementById('usersDetailsBody');
+      const countBadge = document.getElementById('modalUsersCount');
+      if (countBadge) countBadge.textContent = users.length + ' مستخدم';
+
+      body.innerHTML = '';
+      if (!users || users.length === 0) {
+        body.innerHTML = '<tr><td colspan="4" class="text-center p-4 text-muted">لا يوجد مستخدمون مطابقون</td></tr>';
+        return;
+      }
+
+      const roleBadges = {
+        "معلم": "bg-primary text-white",
+        "وكيل": "bg-secondary text-white",
+        "مدير": "text-white' style='background: linear-gradient(135deg, #0f172a, #1e3a8a); border: 1px solid #d4af37",
+        "رائد نشاط": "text-white' style='background: #b8860b",
+        "موجه طلابي": "text-white' style='background: #0f766e",
+        "محضر مختبر": "bg-dark text-white"
+      };
+
+      users.forEach((user, idx) => {
+        const userEmail = user[0] || "-";
+        const userRole = user[2] || "-";
+        const userFullName = user[3] || user[0] || "-";
+        const badgeStyle = roleBadges[userRole] || "bg-light text-dark border";
+
+        body.innerHTML += `
+          <tr class="align-middle">
+            <td class="text-muted small px-3">${idx + 1}</td>
+            <td class="fw-bold text-dark px-3">${userFullName}</td>
+            <td class="text-muted small px-3"><i class="bi bi-envelope text-primary me-1"></i>${userEmail}</td>
+            <td class="text-center px-3">
+              <span class="badge rounded-pill px-3 py-1 ${badgeStyle}">${userRole}</span>
+            </td>
+          </tr>`;
+      });
+    }
+
+    function filterModalUsers() {
+      const query = (document.getElementById('modalUserSearch').value || '').toLowerCase().trim();
+      if (!query) {
+        renderModalUsers(rawModalUsers);
+        return;
+      }
+      const filtered = rawModalUsers.filter(u => {
+        const email = String(u[0] || '').toLowerCase();
+        const role = String(u[2] || '').toLowerCase();
+        const name = String(u[3] || '').toLowerCase();
+        return email.includes(query) || role.includes(query) || name.includes(query);
+      });
+      renderModalUsers(filtered);
+    }
+
+    function loadStaffStats() {
+      const container = document.getElementById('statsContainer');
+      if (!container) return;
+
+      container.innerHTML = '<div class="text-center w-100 p-2"><div class="spinner-border spinner-border-sm text-primary"></div> جاري تحديث الإحصائيات...</div>';
+
+      googleScriptRunner.withSuccessHandler(function(stats) {
+        allStatsData = stats || [];
+        container.innerHTML = '';
+
+        if (!stats || stats.length === 0) {
+          container.innerHTML = '<p class="text-center w-100 text-muted small">لا توجد بيانات متاحة</p>';
+          return;
+        }
+
+        stats.slice(0, 10).forEach((item, index) => {
+          const badgeClass = index < 3 ? 'bg-primary' : 'bg-secondary';
+          container.innerHTML += `
+            <div class="col">
+              <div class="d-flex justify-content-between align-items-center p-2 border-bottom" style="border-radius: 5px;">
+                <span class="text-dark small fw-bold">
+                  <span class="badge ${badgeClass} me-1">${index + 1}</span> ${item.fullName}
+                </span>
+                <span class="badge bg-light text-primary border border-primary rounded-pill">${item.count} شاهد</span>
+              </div>
+            </div>`;
+        });
+      }).getStaffStats();
+    }
+
+    function showAllStats() {
+      const list = document.getElementById('fullStatsList');
+      list.innerHTML = '';
+
+      if (allStatsData.length === 0) {
+        list.innerHTML = '<li class="list-group-item text-center">لا توجد بيانات</li>';
+      } else {
+        allStatsData.forEach((item, index) => {
+          list.innerHTML += `
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge bg-dark me-2">${index + 1}</span>
+                <strong>${item.fullName}</strong>
+              </div>
+              <span class="badge bg-primary rounded-pill">${item.count} ملف</span>
+            </li>`;
+        });
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('allStatsModal'));
+      modal.show();
+    }
+
+    function openEditProfile() {
+      if (!currentUser) return;
+      document.getElementById('editFullName').value = currentUser.name;
+      document.getElementById('editUsername').value = currentUser.username;
+      document.getElementById('editPassword').value = '';
+
+      var myModal = new bootstrap.Modal(document.getElementById('editProfileModal'));
+      myModal.show();
+    }
+
+    document.getElementById('editProfileForm').onsubmit = function(e) {
+      e.preventDefault();
+
+      const newUsername = document.getElementById('editUsername').value.trim();
+      const newName = document.getElementById('editFullName').value.trim();
+      const newPassword = document.getElementById('editPassword').value;
+
+      if (!newName || !newUsername) {
+        Swal.fire('تنبيه', 'يرجى إدخال الاسم والبريد/اسم المستخدم', 'warning');
+        return;
+      }
+
+      const newData = {
+        oldUsername: currentUser.username,
+        newName: newName,
+        newUsername: newUsername,
+        newPassword: newPassword
+      };
+
+      Swal.fire({ title: 'جاري التحديث...', allowOutsideClick: false, didOpen: () => { Swal.showLoading(); } });
+
+      googleScriptRunner.withSuccessHandler(function(res) {
+        if (res && res.success) {
+          currentUser.name = newData.newName;
+          currentUser.username = newData.newUsername;
+          localStorage.setItem('savedUser', JSON.stringify(currentUser));
+
+          const nameElement = document.getElementById('userInfo');
+          if (nameElement) {
+            nameElement.textContent = 'أهلاً: ' + currentUser.name;
+          }
+
+          const modalEl = document.getElementById('editProfileModal');
+          const modalInstance = bootstrap.Modal.getInstance(modalEl);
+          if (modalInstance) modalInstance.hide();
+
+          if (typeof refreshFiles === "function") refreshFiles();
+
+          Swal.fire({
+            icon: 'success',
+            title: 'تم التحديث بنجاح',
+            text: 'تم تعديل بيانات حسابك بنجاح.',
+            confirmButtonColor: '#198754'
+          });
+        } else {
+          Swal.fire('خطأ في التحديث', res.msg || 'فشل التحديث', 'error');
+        }
+      }).updateUserProfile(newData);
+    };
+
+    function togglePassword(id) {
+      const el = document.getElementById(id);
+      el.type = el.type === 'password' ? 'text' : 'password';
+    }
+
+    // دالة استعادة كلمة المرور عبر البريد الإلكتروني
+    function openForgotPassword() {
+      Swal.fire({
+        title: 'استعادة كلمة المرور',
+        text: 'أدخل بريدك الإلكتروني المسجل في النظام لنرسل لك كلمة مرور مؤقتة:',
+        input: 'email',
+        inputPlaceholder: 'name@example.com',
+        showCancelButton: true,
+        confirmButtonText: 'إرسال كلمة المرور',
+        cancelButtonText: 'إلغاء',
+        confirmButtonColor: '#1e3a8a',
+        showLoaderOnConfirm: true,
+        preConfirm: (email) => {
+          if (!email) {
+            Swal.showValidationMessage('يرجى إدخال البريد الإلكتروني');
+            return false;
+          }
+          return new Promise((resolve, reject) => {
+            googleScriptRunner
+              .withSuccessHandler((res) => {
+                if (res && res.success) {
+                  resolve(res);
+                } else {
+                  Swal.showValidationMessage(res.message || 'لم يتم العثور على هذا البريد الإلكتروني');
+                  resolve(false);
+                }
+              })
+              .withFailureHandler((err) => {
+                Swal.showValidationMessage('خطأ في الاتصال: ' + (err.message || err.toString()));
+                resolve(false);
+              })
+              .recoverPassword(email.trim().toLowerCase());
+          });
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+      }).then((result) => {
+        if (result.isConfirmed && result.value) {
+          Swal.fire({
+            icon: 'success',
+            title: 'تم الإرسال بنجاح',
+            html: 'تم إرسال كلمة المرور المؤقتة إلى بريدك الإلكتروني.<br><small class="text-muted">تفقد صندوق الوارد أو الرسائل غير المرغوب فيها (Spam).</small>',
+            confirmButtonColor: '#198754'
+          });
+        }
+      });
+    }
+
+    function filterUserList() {
+      const input = document.getElementById('userSearchInput');
+      const filter = input.value.toLowerCase();
+      const select = document.getElementById('userSel');
+      const options = select.options;
+
+      for (let i = 1; i < options.length; i++) {
+        const txtValue = options[i].text.toLowerCase();
+        options[i].style.display = (txtValue.indexOf(filter) > -1) ? "" : "none";
+      }
+    }
+
+    function filterAdvUserList() {
+      const input = document.getElementById('advUserSearchInput');
+      const filter = input.value.toLowerCase();
+      const select = document.getElementById('advUserSel');
+      const options = select.options;
+
+      for (let i = 1; i < options.length; i++) {
+        const txtValue = options[i].text.toLowerCase();
+        options[i].style.display = (txtValue.indexOf(filter) > -1) ? "" : "none";
+      }
+    }
+
+    // استعادة جلسة المستخدم عند فتح الصفحة
+    window.onload = function() {
+      const savedUser = localStorage.getItem('savedUser');
+      if (savedUser) {
+        try {
+          const res = JSON.parse(savedUser);
+          currentUser = res;
+
+          document.getElementById('userInfoContainer').classList.remove('hidden');
+          document.getElementById('userInfo').innerText = 'أهلاً: ' + res.name;
+
+          if (res.role === 'مدير') {
+            initAdmin();
+          } else {
+            initUser();
+          }
+
+          if (document.getElementById('loginSection')) {
+            document.getElementById('loginSection').classList.add('hidden');
+          }
+        } catch (e) {
+          localStorage.removeItem('savedUser');
+        }
+      }
+    };
+  </script>
+</body>
+
+</html>
+
