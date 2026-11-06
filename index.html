@@ -1583,6 +1583,34 @@
     function up(input, cat, ind) {
       if (!input.files || input.files.length === 0) return;
 
+      // التحقق من أن عدد الملفات المرفوعة للمؤشر المختار لا تتجاوز 5 ملفات
+      const rowContainer = input.closest('.indicator-row') || input.closest('.row');
+      const boxEl = rowContainer ? rowContainer.querySelector('[id^="box_"]') : null;
+      const currentUploadedCount = boxEl ? boxEl.querySelectorAll('.file-badge-pill').length : 0;
+
+      if (currentUploadedCount >= 5) {
+        Swal.fire({
+          icon: 'warning',
+          title: '<span style="color: #b8860b; font-weight: 800;">تجاوز الحد المسموح للشواهد</span>',
+          html: `
+            <div style="font-size: 0.95rem; line-height: 1.8; color: #334155; text-align: center;">
+              <p class="mb-2">الشواهد المسموح رفعها لكل مؤشر هي <strong>5 شواهد كحد أقصى</strong>.</p>
+              <div class="p-3 my-3 text-start rounded-3" style="background: rgba(212, 175, 55, 0.1); border-right: 4px solid #d4af37;">
+                <i class="bi bi-info-circle-fill text-warning me-1"></i>
+                يمكنك حذف شاهد غير ضروري، أو دمج الشواهد المطلوب رفعها في <strong>ملف واحد</strong> (مثل ملف PDF مدمج) والرفع من جديد.
+              </div>
+            </div>
+          `,
+          confirmButtonText: 'حسناً، فهمت ذلك',
+          confirmButtonColor: '#0f172a',
+          customClass: {
+            popup: 'rounded-4 shadow-lg'
+          }
+        });
+        input.value = '';
+        return;
+      }
+
       const file = input.files[0];
       const maxSizeInBytes = 10 * 1024 * 1024; // 10MB
 
